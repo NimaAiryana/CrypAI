@@ -4,6 +4,10 @@ using back.Utilities;
 using Microsoft.AspNetCore.ResponseCompression;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using DotNetEnv;
+
+// Load .env file if exists
+Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { useCryptoDetails, usePriceHistory, useTechnicalAnalysis, useFundamentalAnalysis, useCombinedAnalysis } from '../lib/hooks';
 

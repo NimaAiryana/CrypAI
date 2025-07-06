@@ -21,7 +21,10 @@ public class CoinMarketCapClient : ICoinMarketCapClient
         _httpClient = httpClient;
         _cacheManager = cacheManager;
         _logger = logger;
-        _apiKey = configuration["ExternalApis:CoinMarketCap:ApiKey"] ?? throw new ArgumentNullException("CoinMarketCap API key is missing");
+        // First try to get API key from environment variables, then from configuration
+        _apiKey = Environment.GetEnvironmentVariable("COINMARKETCAP_API_KEY") ?? 
+                 configuration["ExternalApis:CoinMarketCap:ApiKey"] ?? 
+                 throw new ArgumentNullException("CoinMarketCap API key is missing");
         _baseUrl = configuration["ExternalApis:CoinMarketCap:BaseUrl"] ?? "https://pro-api.coinmarketcap.com/v1";
     }
 

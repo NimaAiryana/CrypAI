@@ -23,7 +23,10 @@ public class GeminiClient : IGeminiClient
         _httpClient = httpClient;
         _cacheManager = cacheManager;
         _logger = logger;
-        _apiKey = configuration["ExternalApis:Gemini:ApiKey"] ?? throw new ArgumentNullException("Gemini API key is missing");
+        // First try to get API key from environment variables, then from configuration
+        _apiKey = Environment.GetEnvironmentVariable("GEMINI_API_KEY") ?? 
+                 configuration["ExternalApis:Gemini:ApiKey"] ?? 
+                 throw new ArgumentNullException("Gemini API key is missing");
         _baseUrl = configuration["ExternalApis:Gemini:BaseUrl"] ?? "https://generativelanguage.googleapis.com/v1beta";
         _model = configuration["ExternalApis:Gemini:Model"] ?? "gemini-2.0-flash";
     }
