@@ -3,8 +3,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import CryptoAnalysisCard from '@/components/CryptoAnalysisCard';
 import MarketOverview from '@/components/MarketOverview';
 
@@ -12,10 +10,8 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<'technical' | 'fundamental'>('technical');
   
   return (
-    <main className="min-h-screen flex flex-col">
-      <Header />
-      
-      <div className="flex-grow">
+    <>
+      <div>
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white py-20">
           <div className="container-custom">
@@ -185,8 +181,6 @@ export default function Home() {
           </div>
         </section>
       </div>
-      
-      <Footer />
-    </main>
+    </>
   );
 }
